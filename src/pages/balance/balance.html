@@ -1,0 +1,46 @@
+<!--!DOCTYPE html>
+<html>
+    <head><title>TypeScript Crypto Wallet</title></head>
+    <body>
+        <form>
+            Ether Address: 
+            <input type="text" name="address"><br>
+          </form>
+        <button type="button">Get Balance at address</button>
+        <br>
+        <input type="textbox" name="output"></input>
+
+    </body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../modules/Balance/Balance.js"></script>
+    <script type="text/javascript" src="./web3.min.js"></script>
+    <script type="text/javascript">
+        function getBalance() {
+            var address, wei, balance;
+            address = document.getElementById("address").value;
+            //address = "0x5Ae2Ee9Eff7B3E1E896Ea09Dc663b01dEdb10f24";
+            try {
+                balance = ethBalance(address);
+                console.log('HTML Ether:', balance);
+                document.getElementById("output").innerHTML = balance + " ETH";
+            } catch (err) {
+                document.getElementById("output").innerHTML = err;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>check ETH balance</h1>
+    <p>Enter your Ethereum Address:</p>
+    <input type="text" size="50" id="address" />
+    <button type="button" onClick="getBalance();">Get Balance</button>
+    <br />
+    <br />
+    <div id="output"></div>
+</body>
+</html>
