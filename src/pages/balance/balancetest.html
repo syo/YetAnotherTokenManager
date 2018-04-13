@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="./web3.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+                window.web3 = new Web3(web3.currentProvider);
+            } else {
+                console.log('No Web3 Detected... using HTTP Provider')
+                window.web3 = new Web3();
+                window.web3.setProvider(new Web3.providers.HttpProvider("https://mainnet.infura.io/vbusFTxfH3rpnHftF0N6"));
+            }
+        })
+        function getBalance() {
+            var address, wei, balance;
+            address = document.getElementById("address").value;
+            address = "0x5Ae2Ee9Eff7B3E1E896Ea09Dc663b01dEdb10f24";
+            try {
+                web3.eth.getBalance(address, function (error, wei) {
+                    if (!error) {
+                        var balance = web3.fromWei(wei, 'ether');
+                        //console.log("balanceat: ", web3.eth.balanceAt(address));
+                        console.log('Ether:', web3.fromWei(wei,'ether')); 
+                        //console.log('Latest block: ', web3.eth.getBlock("latest").number);
+                        document.getElementById("output").innerHTML = balance + " ETH";
+                    }
+                });
+            } catch (err) {
+                document.getElementById("output").innerHTML = err;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>check ETH balance</h1>
+    <p>Enter your Ethereum Address:</p>
+    <input type="text" size="50" id="address" />
+    <button type="button" onClick="getBalance();">Get Balance</button>
+    <br />
+    <br />
+    <div id="output"></div>
+</body>
+</html>

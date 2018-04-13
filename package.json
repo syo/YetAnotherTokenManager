@@ -1,0 +1,30 @@
+{
+  "author": {
+    "email": "connorhadley@gmail.com",
+    "name": "Connor Hadley"
+  },
+  "browser": "",
+  "bugs": {
+    "url": ""
+  },
+  "dependencies": {
+    "@types/node": "^9.6.4",
+    "big-number": "^0.4.0",
+    "path": "^0.12.7",
+    "web3": "^0.20.2",
+    "web3-typescript-typings": "^0.10.2"
+  },
+  "description": "A free ERC20 Token Manager",
+  "devDependencies": {
+    "typechain": "^0.1.4"
+  },
+  "license": "MIT",
+  "name": "yetanothertokenmanager",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {},
+  "types": "",
+  "version": ""
+}
